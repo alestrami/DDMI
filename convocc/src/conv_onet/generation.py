@@ -6,10 +6,13 @@ from torch import autograd
 import numpy as np
 from tqdm import trange, tqdm
 import trimesh
-from convocc.src.utils import libmcubes
+#from convocc.src.utils import libmcubes
+import mcubes
 from convocc.src.common import make_3d_grid, normalize_coord, add_key, coord2index
-from convocc.src.utils.libsimplify import simplify_mesh
-from convocc.src.utils.libmise import MISE
+#from convocc.src.utils.libsimplify import simplify_mesh
+from fast_simplification import simplify_mesh
+#from convocc.src.utils.libmise import MISE
+from mise import MISE
 import time
 import math
 
@@ -159,7 +162,7 @@ class Generator3D(object):
         t0 = time.time()
         occ_hat_padded = np.pad(
             occ_hat, 1, 'constant', constant_values=-1e6)
-        vertices, triangles = libmcubes.marching_cubes(
+        vertices, triangles = mcubes.marching_cubes(
             occ_hat_padded, threshold)
         stats_dict['time (marching cubes)'] = time.time() - t0
         # Strange behaviour in libmcubes: vertices are shifted by 0.5

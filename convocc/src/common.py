@@ -1,6 +1,7 @@
 # import multiprocessing
 import torch
-from convocc.src.utils.libkdtree import KDTree
+from pykdtree.kdtree  import KDTree
+#from convocc.src.utils.libkdtree import KDTree
 import numpy as np
 import math
 

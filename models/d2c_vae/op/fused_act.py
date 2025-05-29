@@ -7,13 +7,21 @@ from torch.utils.cpp_extension import load
 
 
 module_path = os.path.dirname(__file__)
+cuda_include_path = os.path.join(
+    os.environ['CONDA_PREFIX'],
+    'lib/python3.10/site-packages/nvidia/cuda_runtime/include'
+)
+
 fused = load(
     'fused',
     sources=[
         os.path.join(module_path, 'fused_bias_act.cpp'),
         os.path.join(module_path, 'fused_bias_act_kernel.cu'),
     ],
+    extra_ldflags=['-L/home/sagemaker-user/.conda/envs/ddmi/bin/'],
+    extra_include_paths=[cuda_include_path], 
 )
+
 
 
 class FusedLeakyReLUFunctionBackward(Function):

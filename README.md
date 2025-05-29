@@ -1,3 +1,21 @@
+
+
+### 3D occupancy
+You first need to generate an occupancy function and process it to make point clouds.
+First, run the following script by changing the `mode` of config files to `eval` from `train`. The generated 3D shapes will be saved in the `eval` folder, located in the directory specified in config `save_pth`.
+```bash
+python main.py --exp ldm --configs configs/ldm/shapenet.yaml
+```
+
+
+
+
+
+
+https://github.com/autonomousvision/occupancy_flow
+https://github.com/CrisalixSA/mise
+--------------------------------------------------------------------------------------
+
 # DDMI: Domain-Agnostic Latent Diffusion Models for Synthesizing High-Quality Implicit Neural Representations
 **[Project Page](https://dogyunpark.github.io/ddmi) |
 [Paper](https://arxiv.org/abs/2401.12517)**

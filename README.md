@@ -1,3 +1,7 @@
+## Download dataset from HF
+
+wget --header="Authorization: Bearer hf_your_actual_token_here" \
+     https://huggingface.co/datasets/ShapeNet/ShapeNetCore-archive/resolve/main/ShapeNetCore.v1.zip
 
 
 ### 3D occupancy

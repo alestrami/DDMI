@@ -11,6 +11,10 @@ First, run the following script by changing the `mode` of config files to `eval`
 python main.py --exp ldm --configs configs/ldm/shapenet.yaml
 ```
 
+## Nerf
+```bash
+python main.py --exp ldm --configs configs/ldm/srn_cars.yaml
+```
 
 
 

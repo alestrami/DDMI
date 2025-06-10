@@ -222,8 +222,10 @@ class LDMTrainer(object):
     def generate(self):
         print('Generating shape!')
         shape = [1, 3*self.channels, self.size1, self.size2]
-        with self.accelerator.autocast():
-            z_test = self.ema.ema_model.sample(shape=shape)
-            mesh, mesh2 = self.mesh_gen.generate_mesh_fromdiffusion(z_test, self.vaemodel, self.mlp, self.accelerator.device)
-        mesh.export(os.path.join(self.results_pth, 'generation.obj'))
-        print('Finished generating shapes!')
+        n_gen_shapes = 10
+        for i in range(n_gen_shapes):
+            with self.accelerator.autocast():
+                z_test = self.ema.ema_model.sample(shape=shape)
+                mesh, mesh2 = self.mesh_gen.generate_mesh_fromdiffusion(z_test, self.vaemodel, self.mlp, self.accelerator.device)
+            mesh.export(os.path.join(self.results_pth, f'generation_{i}.obj'))
+        print(f'Finished generating {n_gen_shapes} shapes!')

@@ -272,7 +272,7 @@ def second_stage_train(args):
 
     elif args.domain == 'nerf':
         from tools.ldm.nerf import LDMTrainer
-        from models.d2c_vae.autoencoder_unet import Autoencoder
+        from models.d2c_vae.autoencoder_unet import Autoencoder3D
         from models.d2c_vae.mlp import MLPNeRF as MLP
         from models.d2c_vae.pointnet import LocalPoolPointnet
         from diffusion.ddpm import DDPM
@@ -295,7 +295,7 @@ def second_stage_train(args):
         ## Get model
         # pointnet/config from https://github.com/autonomousvision/convolutional_occupancy_networks
         pointnet = LocalPoolPointnet(dim=cfg['data']['dim'], c_dim=cfg['model']['c_dim'], padding=cfg['data']['padding'], **cfg['model']['encoder_kwargs'])
-        vaemodel = Autoencoder(ddconfig=args.ddconfig, embed_dim=args.embed_dim)
+        vaemodel = Autoencoder3D(ddconfig=args.ddconfig, embed_dim=args.embed_dim)
         mlp = MLP(**args.mlpconfig, in_channels_dir=cfg['model']['TN']['input_ch_views_embed'])
 
         if args.DiT:
@@ -323,7 +323,7 @@ def second_stage_train(args):
         print('FID Evaluation!')
         trainer.eval()
     elif args.mode == 'gen':
-        print('Random image generation!')
+        print('Random image/shape/nerf generation!')
         trainer.generate()
     else:
         raise ValueError

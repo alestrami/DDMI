@@ -260,7 +260,8 @@ class LDMTrainer(object):
                                   
         for i in range(self.test_batch_size):
             z_test = self.ema.ema_model.sample(shape=shape)
-            pe = self.vaemodel.module.decode(z_test)
+            #pe = self.vaemodel.module.decode(z_test)
+            pe = self.vaemodel.decode(z_test)
             fea = {}
             fea['xy'] = pe[0][0]
             fea['yz'] = pe[1][0]

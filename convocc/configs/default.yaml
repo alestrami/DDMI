@@ -1,7 +1,7 @@
 method: conv_onet
 data:
   dataset: Shapes3D
-  path: /hub_data2/dogyun/data/ShapeNet
+  path: data/ShapeNet #/hub_data2/dogyun/data/ShapeNet
   watertight_path: data/watertight
   classes: null
   input_type: img

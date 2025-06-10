@@ -97,11 +97,13 @@ class NeRFShapeNetDataset(Dataset):
             for file in npz_glob:
                 sample_name = file.split('_')[-1].split('.')[0]
 
-                df = df.append({'class': data_class,
-                                'name': sample_name,
-                                'sample_filename':file, 
-                                'obj_filename':join(self.shapenet_root_dir, category_to_synth_id[data_class], sample_name, 'models','model_normalized.obj')}, 
-                                ignore_index=True)
+                new_row = pd.DataFrame([{
+                            'class': data_class,
+                            'name': sample_name,
+                            'sample_filename': file,
+                            'obj_filename': join(self.shapenet_root_dir, category_to_synth_id[data_class], sample_name, 'models', 'model_normalized.obj')
+                        }])
+                df = pd.concat([df, new_row], ignore_index=True)
 
                 #with np.load(file) as data:
                 #self.data.append({'data': np.array(data['data']), 'images':np.array(data['images']), 'cam_poses':np.array(data['cam_poses'])})

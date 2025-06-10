@@ -1,10 +1,21 @@
+# Data from Occupancy Networks
+https://github.com/autonomousvision/occupancy_networks#preprocessed-data
+
+You can either download the dataset from HF and process that with their scripts
 ## Download dataset from HF
 
 wget --header="Authorization: Bearer hf_your_actual_token_here" \
      https://huggingface.co/datasets/ShapeNet/ShapeNetCore-archive/resolve/main/ShapeNetCore.v1.zip
 
+<<<<<<< Updated upstream
 # Generate 
 ## 3D occupancy
+=======
+## Download from Occupancy
+Or either using the script provided download_data.sh. It will download dataset_small_v1.1.zip hosted on aws.s3
+
+### 3D occupancy
+>>>>>>> Stashed changes
 You first need to generate an occupancy function and process it to make point clouds.
 First, run the following script by changing the `mode` of config files to `eval` from `train`. The generated 3D shapes will be saved in the `eval` folder, located in the directory specified in config `save_pth`.
 ```bash
@@ -19,7 +30,7 @@ python main.py --exp ldm --configs configs/ldm/srn_cars.yaml
 
 
 
-
+https://github.com/autonomousvision/occupancy_networks
 https://github.com/autonomousvision/occupancy_flow
 https://github.com/CrisalixSA/mise
 --------------------------------------------------------------------------------------

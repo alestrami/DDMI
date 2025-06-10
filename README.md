@@ -3,8 +3,8 @@
 wget --header="Authorization: Bearer hf_your_actual_token_here" \
      https://huggingface.co/datasets/ShapeNet/ShapeNetCore-archive/resolve/main/ShapeNetCore.v1.zip
 
-
-### 3D occupancy
+# Generate 
+## 3D occupancy
 You first need to generate an occupancy function and process it to make point clouds.
 First, run the following script by changing the `mode` of config files to `eval` from `train`. The generated 3D shapes will be saved in the `eval` folder, located in the directory specified in config `save_pth`.
 ```bash
